@@ -1,35 +1,37 @@
 variable "region" {
-    type        = "string"
-    description = "AWS Region"
-    default     = "us-east-1"
+  type        = "string"
+  description = "AWS Region"
+  default     = "us-east-1"
 }
 
 variable "key_name" {
-    type        = "string"
-    description = "The name of the EC2 secret key (primarily for SSH access)"
+  type        = "string"
+  description = "The name of the EC2 secret key (primarily for SSH access)"
+  default     = "geotrellis-emr"
 }
 
 variable "s3_log_uri" {
-    type        = "string"
-    description = "Where EMR logs will be sent"
+  type        = "string"
+  description = "Where EMR logs will be sent"
+  default     = "s3://geotrellis-test/eac/logs/"
 }
 
 variable "ecs_ami" {
-    type        = "string"
-    description = "AMI to use for the ECS Instance"
-    default     = "ami-9eb4b1e5"
+  type        = "string"
+  description = "AMI to use for the ECS Instance"
+  default     = "ami-9eb4b1e5"
 }
 
 variable "jupyterhub_port" {
-    type        = "string"
-    description = "The port on which to connect to JupyterHub"
-    default     = "8000"
+  type        = "string"
+  description = "The port on which to connect to JupyterHub"
+  default     = "8000"
 }
 
 variable "worker_count" {
-    type        = "string"
-    description = "The number of worker nodes"
-    default     = "1"
+  type        = "string"
+  description = "The number of worker nodes"
+  default     = "1"
 }
 
 variable "emr_service_role" {
@@ -53,21 +55,25 @@ variable "ecs_instance_profile" {
 variable "bs_bucket" {
   type        = "string"
   description = "S3 Bucket containing the bootstrap script (e.g. bucket if the whole path is s3://bucket/containing/bootstrap)"
+  default     = "geotrellis-test"
 }
 
 variable "bs_prefix" {
   type        = "string"
   description = "The prefix of the bootstrap script within the s3 bucket (e.g. containing/bootstrap if the whole path is s3://bucket/containing/bootstrap/bootstrap.sh)"
+  default     = "eac"
 }
 
 variable "s3_rpm_uri" {
   type        = "string"
   description = "S3 path containing RPMs (e.g. s3://bucket/containing/rpms/)"
+  default     = "s3://geotrellis-test/eac/rpms/3.3/"
 }
 
 variable "s3_notebook_uri" {
   type        = "string"
   description = "S3 path for notebooks (e.g. s3://bucket/containing/notebooks/)"
+  default     = "s3://geotrellis-test/eac/notebooks/"
 }
 
 variable "jupyterhub_oauth_module" {
@@ -101,7 +107,7 @@ variable "geopyspark_jars" {
 variable "geopyspark_uri" {
   type        = "string"
   description = "URI from which the GeoPySpark Python code is to be obtained"
-  default     = "https://github.com/locationtech-labs/geopyspark/archive/ce5e03f7210966d893129311d1dd5b3945075bf7.zip"
+  default     = "https://github.com/locationtech-labs/geopyspark/archive/db9f3e8cace42397188d74c0d1a79a7e21855069.zip"
 }
 
 variable "bid_price" {

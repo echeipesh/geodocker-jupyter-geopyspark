@@ -177,6 +177,13 @@ else
     sudo ln -s /usr/local/bin/pip3.4 /usr/bin/
     (cd /tmp/blobs ; sudo pip3.4 install *.whl)
 
+    # Install GeoPySpark
+    if [[ $GEOPYSPARKURI == s3* ]]; then
+	aws s3 cp $GEOPYSPARKURI /tmp/geopyspark.zip
+	GEOPYSPARKURI=/tmp/geopyspark.zip
+    fi
+    sudo -E env "PATH=/usr/local/bin:$PATH" pip3.4 install "$GEOPYSPARKURI"
+    
     # Linkage
     echo '/usr/local/lib' > /tmp/local.conf
     echo '/usr/local/lib64' >> /tmp/local.conf
